@@ -12,11 +12,11 @@ jobs:
     executor:
       name: win/default
       version: edge
-    steps:
-      - checkout
+    steps:    
       - add_ssh_keys:
           fingerprints:
             - "XX:XX:XX:XX"
+      - checkout
       - run:
           name: Restore project dependencies and tools
           command: dotnet restore src\Cfd
