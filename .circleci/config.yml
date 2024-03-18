@@ -15,7 +15,7 @@ jobs:
     steps:    
       - add_ssh_keys:
           fingerprints:
-            - "XX:XX:XX:XX"
+            - "SHA256:OG/zNyhypWA+HxhPiME/rxzFU+aNNdA+5KgbBn9+w38 your_email@example.com"
       - checkout
       - run:
           name: Restore project dependencies and tools
