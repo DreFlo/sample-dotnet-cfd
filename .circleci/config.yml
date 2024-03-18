@@ -14,6 +14,9 @@ jobs:
       version: edge
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "XX:XX:XX:XX"
       - run:
           name: Restore project dependencies and tools
           command: dotnet restore src\Cfd
