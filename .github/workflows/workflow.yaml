@@ -14,9 +14,9 @@ jobs:
   steps:
    - uses: actions/checkout@v4   
    - run: dotnet   restore src\Cfd 
-   - run: |
-      dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
+   - run: |   
       mkdir test-results
+      dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
    - uses: actions/upload-artifact@v4
      with:
       name: project
