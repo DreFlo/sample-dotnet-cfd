@@ -1,9 +1,5 @@
 name: "build-and-unittest"
 
-defaults:
-  run:
-    shell: "bash"
-
 on:
   workflow_dispatch:
 
@@ -12,9 +8,6 @@ jobs:
     name: "build-and-test"
     runs-on:
     - "windows-latest"
-    defaults:
-      run:
-        shell: "bash"
     steps:
     - uses: "actions/checkout@v4"
     - 
@@ -33,4 +26,3 @@ jobs:
       with:
         name: "artifact_./Cfd.Tests/test-results"
         path: "./Cfd.Tests/test-results"
-        retention-days: null
