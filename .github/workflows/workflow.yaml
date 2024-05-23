@@ -1,23 +1,33 @@
-name: Dotnet
+name: "build-and-unittest"
 
-
-
-on: [ push ]
-
-
+defaults:
+  run:
+    shell: "bash"
 
 jobs:
- build-and-test:
-  runs-on: windows-latest 
-  
-  
-  steps:
-   - uses: actions/checkout@v4   
-   - run: dotnet   restore src\Cfd 
-   - run: |   
-      mkdir test-results
-      dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
-   - uses: actions/upload-artifact@v4
-     with:
-      name: project
-      path: './Cfd.Tests/test-results'
+  build-and-test:
+    name: "build-and-test"
+    runs-on:
+    - "windows-latest"
+    defaults:
+      run:
+        shell: "bash"
+    steps:
+    - uses: "actions/checkout@v4"
+    - 
+      run: "dotnet restore src\Cfd"
+      name: "Restore project dependencies and tools"
+    - 
+      run: "dotnet build src\Cfd"
+      name: "Build project"
+    - 
+      run: |
+        mkdir test-results
+        dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
+      name: "Running tests"
+    - 
+      uses: "actions/upload-artifact@v4"
+      with:
+        name: "artifact_./Cfd.Tests/test-results"
+        path: "./Cfd.Tests/test-results"
+        retention-days: null
