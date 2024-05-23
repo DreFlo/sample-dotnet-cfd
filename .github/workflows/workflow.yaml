@@ -4,6 +4,9 @@ defaults:
   run:
     shell: "bash"
 
+on:
+  workflow_dispatch:
+
 jobs:
   build-and-test:
     name: "build-and-test"
@@ -15,10 +18,10 @@ jobs:
     steps:
     - uses: "actions/checkout@v4"
     - 
-      run: "dotnet restore src\Cfd"
+      run: "dotnet restore src\\Cfd"
       name: "Restore project dependencies and tools"
     - 
-      run: "dotnet build src\Cfd"
+      run: "dotnet build src\\Cfd"
       name: "Build project"
     - 
       run: |
