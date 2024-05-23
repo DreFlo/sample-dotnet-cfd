@@ -24,5 +24,5 @@ jobs:
     - 
       uses: "actions/upload-artifact@v4"
       with:
-        name: "artifact_./Cfd.Tests/test-results"
+        name: "artifact"
         path: "./Cfd.Tests/test-results"
